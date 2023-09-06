@@ -3,10 +3,21 @@ package com.nelson.course.entities;
 import java.io.Serializable;
 import java.util.Objects;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+//anotações nessa entidade, para instruir para JPA como ele vai converter os objetos para o modelo relacional
+@Entity
+@Table(name = "tb_user") //renomear o nome da tabela do banco H2 para tb_user
 public class User implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	
+	@Id //informando que o id é a chave primária
+	@GeneratedValue(strategy = GenerationType.IDENTITY)//informa para o JPA que essa chave é auto incrementável no banco de dados 
 	private Long id;
 	private String name;
 	private String email;
